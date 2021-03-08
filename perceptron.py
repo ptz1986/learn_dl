@@ -1,7 +1,5 @@
-#!/usr/bin/env python
-# -*- coding: UTF-8 -*-
+#!/usr/bin/python3
 
-from __future__ import print_function
 from functools import reduce
 
 
@@ -71,6 +69,7 @@ class Perceptron(object):
         """
         # 计算向量input_vec[x1,x2,x3...]和weights[w1,w2,w3,...]的内积
         # 然后加上bias
+        print(input_vec)
         return self.activator(
             VectorOp.dot(input_vec, self.weights) + self.bias)
 
@@ -94,6 +93,13 @@ class Perceptron(object):
             output = self.predict(input_vec)
             # 更新权重
             self._update_weights(input_vec, output, label, rate)
+            print("vec: ", input_vec)
+            print("output: %f, rate = %f" % (output, rate))
+            print("label: ", label)
+            #print("vec = %f, output = %f, label = %f, rate = %f" % (input_vec, output, label, rate))
+            print("weights: ", self.weights)
+            print("-------")
+        print("========\n\n")
 
     def _update_weights(self, input_vec, output, label, rate):
         """
